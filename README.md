@@ -23,7 +23,7 @@ Tired of food items blocking your entire view when you're trying to eat and figh
 ---
 
 ## 🛠️ Requirements
-* **Minecraft Version:** 1.21.5
+* **Minecraft Version:** 1.21.4-1.21.11
 * **Mod Loader:** [Fabric](https://fabricmc.net/)
 * **Dependencies:** [Fabric API](https://modrinth.com/mod/fabric-api)
 
