@@ -3,6 +3,7 @@ package bettereats.mixin;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.item.HeldItemRenderer;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Arm;
 import org.spongepowered.asm.mixin.Final;
@@ -19,9 +20,10 @@ public class HeldItemRendererMixin {
     @Inject(method = "applyEatOrDrinkTransformation", at = @At("HEAD"), cancellable = true)
     private void staticHeldEating$skipEatTransform(
         MatrixStack matrices,
-        float tickDelta,
+        float tickProgress,
         Arm arm,
         ItemStack stack,
+        PlayerEntity player,
         CallbackInfo ci
     ) {
         if (client.player != null && client.player.isUsingItem()) {

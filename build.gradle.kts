@@ -1,14 +1,14 @@
 plugins {
-    id("fabric-loom") version "${property("loom_version")}" apply true
+    id("fabric-loom") version "1.10-SNAPSHOT"
     id("maven-publish")
 }
 
-val minecraftVersion: String by project
-val yarnMappings: String by project
-val loaderVersion: String by project
-val fabricVersion: String by project
-val modVersion: String by project
-val mavenGroup: String by project
+val minecraftVersion = property("minecraft_version") as String
+val yarnMappings = property("yarn_mappings") as String
+val loaderVersion = property("loader_version") as String
+val fabricVersion = property("fabric_version") as String
+val modVersion = property("mod_version") as String
+val mavenGroup = property("maven_group") as String
 
 version = modVersion
 group = mavenGroup
@@ -32,17 +32,20 @@ java {
     withSourcesJar()
 }
 
+val modId = project.property("mod_id") as String
+val modName = project.property("mod_name") as String
+
 tasks.processResources {
     inputs.property("version", modVersion)
     inputs.property("minecraft_version", minecraftVersion)
-    inputs.property("mod_id", property("mod_id"))
-    inputs.property("mod_name", property("mod_name"))
+    inputs.property("mod_id", modId)
+    inputs.property("mod_name", modName)
     filesMatching("fabric.mod.json") {
         expand(
             "version" to modVersion,
             "minecraft_version" to minecraftVersion,
-            "mod_id" to property("mod_id"),
-            "mod_name" to property("mod_name")
+            "mod_id" to modId,
+            "mod_name" to modName
         )
     }
 }
