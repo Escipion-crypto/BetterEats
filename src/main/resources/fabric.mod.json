@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "${mod_id}",
+  "version": "${version}",
+  "name": "${mod_name}",
+  "description": "Keeps held items static while eating or drinking.",
+  "authors": ["bettereats"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "bettereats.StaticHeldEatingClient"
+    ]
+  },
+  "mixins": [
+    "static_held_eating.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "${minecraft_version}",
+    "fabric": "*"
+  }
+}
